@@ -3,3 +3,5 @@ Here are the things which needs to be added in importaint points:-
 	set git config --global user.email amit.pathak@yahoo.com
 2)three phases of git modification :-
  	modification			staging(adding)			commit
+3)we will add it later:wq
+
