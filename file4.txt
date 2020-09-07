@@ -1,0 +1,47 @@
+some command of git=> 
+1)git config --global user.name "username"
+2)git config --global user.email "useremail@gmail.com"
+3)git config --list
+4)git help config OR git config --help
+5)git init // make a normal repo to a git repo
+6)rm -rf .git  //make a git repo to a normal repo
+7) touch .gitignore // create a ignore file.if a file name is written inside this file then that file will be ignored by git status
+8)git add -A //add all file in stage area
+9)git reset file1.txt // unstatge the file OR git reset // unstage all files from staging area
+10)git log   // logs of commits
+
+11) git clone https:github.com/repogit . // close the url repo in corrent directory
+12)git remote -v // show the remote directory details
+13)git branch -a // it will show all the branches in local as well as remote
+14)git brach brachname  // it will create a branch with name-branchname
+15)git checkout brachname //switch the branch to branchname
+16)git push -u origin branchname // push the local changes to remote
+17git branch --merged // to check how many branch merged with master.NOTE : first be in master branch
+18)git merge branchname // it will merge the branchname branch into master
+19)git branch -d branchname //delete the banchname branch from local
+20)git push origin --delete branchname //delete the branchname branch from remote
+
+21)git commit --amend -m "right commit message"  //it will replace the last commit message with the new one
+22)git add .gitignore //add the .gitignore file in stage
+	git commit --amend   //do not change anything
+	git log --stat // it will show the commits as well as changes done in that particular commit
+23) //moving commits from one branch to another
+	git log //it will show all commits.NOTE : current branch is master
+	git checkout featurebranch //go to the feature branch
+	git cherry-pick 18bty343 // it will take the commit -"18bty343*" from master branch to featurebranch
+24)// 3 types fo reset
+	A) git reset --soft 18bty343 // it will delete all the commits after the "18bty343*" commit but the files will be staged which were staged in deleted commits.
+	B) git reset 18bty343 // it will delete all the commits after "18bty343*" commit but the files will also be unstaged which were staged in deleted commits.
+	C) git reset --hard 18bty343 // it will delete all the commits after "18bty343*" commit but the modification done in all  tracked files will also be removed which were staged in deleted commits.
+25)git clean -df // it will clean all untracked file or directory. here -d is for directory and -f is for file
+26)git reflog // log all the commits and changes
+27)git revert 18bty343// it wiil revert back the changes done in commit "18bty343*"
+
+28)git stash save "type the stash message" // it will save the changes done in a particular branch
+29)git stash list // it will list all the stashes 
+30)// restore the changes done earlier and stashed
+	A) git apply stash{0} // it will restore the stash{0} but stash{0} will be still there in stash list
+	B) git stash pop // apply the latest changes done in stash and remove the stash from the stash list
+31) git stash drop stash{0} // drop the stash{0} from the stash list without applying it
+32) git stash clear //drop all the stash from the stash list without applying them
+33)
