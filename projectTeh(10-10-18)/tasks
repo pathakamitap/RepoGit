@@ -1,0 +1,105 @@
+header
+icon change with color
+dealer name with registration
+profile edit
+default pic(icon)
+logo
+add footer
+hover issue 
+login validation
+
+
+
+change pic
+dealer name
+password
+dealership name
+.dealership pic
+.address
+.phone
+.email unique
+
+
+<div class="container-fluid">
+    <div class="panel panel-default" id="panel">
+      <h2><div class="panel-heading">Edit Profile</div></h2>
+    </div>
+    <div class="container">
+ <?php 
+if(!isset($_SESSION['dealerid'])) {
+    $loginError = "You are not logged in.";
+    header("location:index.php");
+    exit();
+}
+if(isset($_SESSION['updateProfile']) && $_SESSION['updateProfile']==1){
+  echo "<script> alert('Profile has been updated')</script>";
+}elseif(isset($_SESSION['updateProfile']) && $_SESSION['updateProfile']==1){
+  echo "<script> alert('Erroe in Profile Updation')</script>";
+}
+unset($_SESSION['updateProfile']);
+    $id=$_SESSION['dealerid'];
+    $con = mysqli_connect("localhost","root","","inventry");
+    $qry1=mysqli_query($con,"SELECT dealerdata.*,dealersaccount.profilePic FROM `dealersaccount`,`dealerdata` where dealerdata.id='$id'");
+    while($data=mysqli_fetch_assoc($qry1)){
+        $dealershipname=$data['DealershipName'];
+        $image=$data['Image'];
+        $profilePic=$data['profilePic'];
+        $dealername=$data['DealerName'];
+        $location=$data['Location'];
+        $phone=$data['Phone'];
+        $email=$data['Email'];
+
+    }
+        ?>
+        <br><br>
+   <form action="updateProfile.php" method="post" enctype="multipart/form-data" >
+            <div class="col-lg-6">
+              <div class="form-group">
+                  <label for="name">Dealership Name:</label>
+                    <input type="text" class="form-control" name="dealershipName" value="<?php echo $dealershipname ?>" required="required">
+              </div>
+              </div>
+              <div class="col-lg-6">
+              <div class="form-group">
+                  <label for="name">Dealer Name:</label>
+                    <input type="text" class="form-control" name="dealerName" value="<?php echo $dealername ?>" required="required">
+              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+                  <label for="name">Location:</label>
+                    <input type="text" class="form-control" name="dealershipLocation" value="<?php echo $location ?>" required="required">
+              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+                  <label for="name">Phone Number:</label>
+                    <input type="text" class="form-control" name="dealershipPhone" value="<?php echo $phone ?>" required="required">
+              </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="form-group">
+                  <label for="name">Profile Pic:</label><br> 
+                  <img src="images/profilePics/<?php echo $profilePic ?>" style="width:100px;height: 100px;">
+                  <input type="file" name="profilePic" >
+                  <input type="hidden" name="profilePicName" value="<?php echo $profilePic; ?>">
+                  <input type="hidden" name="id" value="<?php echo $id; ?>">
+              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+                  <label for="name">Dealership Pic:</label><br> 
+                  <img src="../../images/<?php echo $image ?>" style="width:100px;height: 100px;">
+                  <input type="file" name="dealershipImage" >
+                  <input type="hidden" name="dealershipImageName" value="<?php echo $image; ?>">
+                  <input type="hidden" name="id" value="<?php echo $id; ?>">
+              </div>
+          </div>
+
+          <div class="col-lg-12">
+          <center>  <input type="submit" class="btn btn-primary" name="submitUpdateDetails" value="Submit"></center>
+          </div>
+          </form>
+        </div>
+      </div>

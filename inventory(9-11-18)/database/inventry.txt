@@ -1,0 +1,5 @@
+ALTER TABLE dealersaccount
+ADD CONSTRAINT id
+    FOREIGN KEY (id)
+    REFERENCES dealerdata (id)
+    ON DELETE CASCADE;
